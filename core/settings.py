@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     "unfold.contrib.location_field",
     "unfold.contrib.constance",
     "constance",
-
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -106,6 +105,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "static"
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -114,5 +114,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 CONSTANCE_CONFIG = {
-    'TELEGRAM_CHANNEL_USERNAME': (CHANNEL_USERNAME, "Юзер телеграм канала для получения сообщений"),
+    "TELEGRAM_CHANNEL_USERNAME": (
+        CHANNEL_USERNAME,
+        "Юзер телеграм канала для получения сообщений",
+    ),
 }
