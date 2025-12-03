@@ -121,3 +121,6 @@ CONSTANCE_CONFIG = {
 }
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
+
+CSRF_TRUSTED_ORIGINS = list(filter(lambda x: x, env.str("CSRF_TRUSTED_ORIGINS").split(",")))
