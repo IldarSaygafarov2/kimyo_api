@@ -119,3 +119,5 @@ CONSTANCE_CONFIG = {
         "Юзер телеграм канала для получения сообщений",
     ),
 }
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
