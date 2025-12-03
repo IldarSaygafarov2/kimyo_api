@@ -1,30 +1,30 @@
 from django.contrib import admin
-
+from unfold.admin import ModelAdmin, TabularInline
 from .models import Category, Product, ProductApplication, Industry, UserRequest
 # from constance.admin import Config, ConstanceAdmin
 
 
 @admin.register(UserRequest)
-class UserRequestAdmin(admin.ModelAdmin):
+class UserRequestAdmin(ModelAdmin):
     pass
 
 
 @admin.register(Industry)
-class IndustryAdmin(admin.ModelAdmin):
+class IndustryAdmin(ModelAdmin):
     pass
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
 
-class ProductApplicationInline(admin.TabularInline):
+class ProductApplicationInline(TabularInline):
     model = ProductApplication
     extra = 1
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     inlines = [ProductApplicationInline]
