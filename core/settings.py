@@ -130,5 +130,5 @@ CSRF_TRUSTED_ORIGINS = list(
 )
 
 CORS_ALLOWED_ORIGINS = list(
-    filter(lambda x: x, env.str("CSRF_TRUSTED_ORIGINS").split(","))
+    filter(lambda x: x, env.str("CORS_ALLOWED_ORIGINS").split(","))
 )
