@@ -143,6 +143,7 @@ LOCALE_PATHS = [
 LANGUAGES = (
     ("ru", "Russian"),
     ("uz", "Uzbek"),
+    ("en", "English"),
 )
 
 MODELTRANSLATION_TRANSLATION_FILES = [
