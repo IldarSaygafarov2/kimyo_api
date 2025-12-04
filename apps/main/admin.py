@@ -1,7 +1,6 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin, TabularInline
 from .models import Category, Product, ProductApplication, Industry, UserRequest
-# from constance.admin import Config, ConstanceAdmin
 
 
 @admin.register(UserRequest)

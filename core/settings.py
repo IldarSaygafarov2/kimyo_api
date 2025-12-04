@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "unfold.contrib.location_field",
     "unfold.contrib.constance",
     "constance",
+    "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -120,7 +122,13 @@ CONSTANCE_CONFIG = {
     ),
 }
 
-CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 
 
-CSRF_TRUSTED_ORIGINS = list(filter(lambda x: x, env.str("CSRF_TRUSTED_ORIGINS").split(",")))
+CSRF_TRUSTED_ORIGINS = list(
+    filter(lambda x: x, env.str("CSRF_TRUSTED_ORIGINS").split(","))
+)
+
+CORS_ALLOWED_ORIGINS = list(
+    filter(lambda x: x, env.str("CSRF_TRUSTED_ORIGINS").split(","))
+)
