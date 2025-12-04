@@ -1,6 +1,7 @@
 from django.contrib import admin
 from unfold.admin import ModelAdmin, TabularInline
 from .models import Category, Product, ProductApplication, Industry, UserRequest
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
 
 @admin.register(UserRequest)
@@ -9,21 +10,21 @@ class UserRequestAdmin(ModelAdmin):
 
 
 @admin.register(Industry)
-class IndustryAdmin(ModelAdmin):
+class IndustryAdmin(ModelAdmin, TranslationAdmin):
     pass
 
 
 @admin.register(Category)
-class CategoryAdmin(ModelAdmin):
+class CategoryAdmin(ModelAdmin, TranslationAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
 
-class ProductApplicationInline(TabularInline):
+class ProductApplicationInline(TabularInline, TranslationTabularInline):
     model = ProductApplication
     extra = 1
 
 
 @admin.register(Product)
-class ProductAdmin(ModelAdmin):
+class ProductAdmin(ModelAdmin, TranslationAdmin):
     prepopulated_fields = {"slug": ("name",)}
     inlines = [ProductApplicationInline]

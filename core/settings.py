@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 import environs
@@ -32,14 +33,15 @@ INSTALLED_APPS = [
     "unfold.contrib.simple_history",
     "unfold.contrib.location_field",
     "unfold.contrib.constance",
-    "constance",
-    "corsheaders",
+    "modeltranslation",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "constance",
+    "corsheaders",
     "apps.main.apps.MainConfig",
 ]
 
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -132,3 +135,17 @@ CSRF_TRUSTED_ORIGINS = list(
 CORS_ALLOWED_ORIGINS = list(
     filter(lambda x: x, env.str("CORS_ALLOWED_ORIGINS").split(","))
 )
+
+LOCALE_PATHS = [
+    BASE_DIR / "locale",
+]
+
+LANGUAGES = (
+    ("ru", "Russian"),
+    ("uz", "Uzbek"),
+)
+
+MODELTRANSLATION_TRANSLATION_FILES = [
+    "apps.main.translation",
+]
+MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
