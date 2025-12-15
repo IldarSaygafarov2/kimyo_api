@@ -1,6 +1,8 @@
 import uuid
-from ninja import Schema
 from datetime import datetime
+
+from ninja import Schema
+
 from .product import ProductSimpleSchema
 
 
@@ -17,5 +19,5 @@ class CategorySchema(Schema):
 class CategoryProductSchema(Schema):
     id: uuid.UUID
     name: str
+    short_description: str
     products: list[ProductSimpleSchema]
-    

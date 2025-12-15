@@ -21,9 +21,8 @@ class Product(BaseTimedModel):
         blank=True,
     )
     image = models.ImageField(verbose_name="Фото", upload_to="products/")
-    category = models.ForeignKey(
+    category = models.ManyToManyField(
         "main.Category",
-        on_delete=models.CASCADE,
         related_name="products",
         verbose_name="Категория",
     )
