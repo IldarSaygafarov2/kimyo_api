@@ -12,6 +12,6 @@ router = Router(tags=["Заявки пользователей"])
 def send_user_request(request: HttpRequest, data: UserRequestCreationSchema):
     user_request = UserRequest.objects.create(**data.model_dump())
 
-    send_user_request_to_telegram(user_request)
-
+    sent_request = send_user_request_to_telegram(user_request)
+    print(sent_request)
     return user_request

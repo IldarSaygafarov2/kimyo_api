@@ -1,22 +1,21 @@
-from apps.main.models.user_request import UserRequest
-from constance import config
-
 import requests
+from constance import config
+from core.settings import TELEGRAM_API_URL
+from apps.main.models.user_request import UserRequest
 
 
 def send_user_request_to_telegram(user_request: UserRequest):
     message = f"""
-Имя: {user_request.name}
-Номер телефона: {user_request.phone_number}
-Компания: {user_request.company}
-Комментарий: {user_request.comment}
+Имя: <b>{user_request.name}</b>
+Номер телефона: <b>{user_request.phone_number}</b>
+Компания: <b>{user_request.company}</b>
+Комментарий: <b>{user_request.comment}</b>
 """
-
-    url = config.TELEGRAM_CHANNEL_USERNAME + "sendMessage"
     return requests.post(
-        url,
+        TELEGRAM_API_URL + "sendMessage",
         json={
             "chat_id": config.TELEGRAM_CHANNEL_USERNAME,
             "text": message,
+            "parse_mode": "HTML"
         },
     )
