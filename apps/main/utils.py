@@ -10,6 +10,7 @@ def send_user_request_to_telegram(user_request: UserRequest):
 Номер телефона: <b>{user_request.phone_number}</b>
 Компания: <b>{user_request.company}</b>
 Комментарий: <b>{user_request.comment}</b>
+Дата отправки: <b>{user_request.created_at.strftime("%Y-%m-%d %H:%M:%S")}</b>
 """
     return requests.post(
         TELEGRAM_API_URL + "sendMessage",
