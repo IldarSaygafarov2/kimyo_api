@@ -6,7 +6,8 @@ from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
 @admin.register(UserRequest)
 class UserRequestAdmin(ModelAdmin):
-    pass
+    list_display = ["id", "name", "phone_number", "company", "created_at"]
+    sortable_by = ["created_at"]
 
 
 @admin.register(Industry)
