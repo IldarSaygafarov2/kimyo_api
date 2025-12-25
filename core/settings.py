@@ -16,7 +16,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env.str("SECRET_KEY")
 
-TELEGRAM_API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}/"
 
 DEBUG = env.bool("DEBUG")
 
@@ -123,6 +122,10 @@ CONSTANCE_CONFIG = {
         CHANNEL_USERNAME,
         "Юзер телеграм канала для получения сообщений",
     ),
+    "TELEGRAM_BOT_TOKEN": (
+        BOT_TOKEN,
+        "Токен от бота в телеграм, если не создавали новый бот, то трогать это поле не нужно",
+    ),
 }
 
 CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
@@ -150,3 +153,6 @@ MODELTRANSLATION_TRANSLATION_FILES = [
     "apps.main.translation",
 ]
 MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
+
+
+TELEGRAM_API_URL = "https://api.telegram.org/bot{BOT_TOKEN}/"

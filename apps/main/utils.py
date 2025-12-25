@@ -17,7 +17,7 @@ def send_user_request_to_telegram(user_request: UserRequest):
 Дата отправки: <b>{correct_time.strftime("%Y-%m-%d %H:%M:%S")}</b>
 """
     return requests.post(
-        TELEGRAM_API_URL + "sendMessage",
+        TELEGRAM_API_URL.format(BOT_TOKEN=config.TELEGRAM_BOT_TOKEN) + "sendMessage",
         json={
             "chat_id": config.TELEGRAM_CHANNEL_USERNAME,
             "text": message,
